@@ -200,6 +200,17 @@ html, body {
     color: #3e7da2;
 }
 
+.dark-mode .sci li a i {
+    color: #f5f5f5;
+}
+
+#dark-mode-toggle i::after {
+    content: '\f186';
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: #3e7da2;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }

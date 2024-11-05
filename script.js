@@ -13,3 +13,13 @@ if (blob) {
         blob.style.transform = `translate(${moveX}px, ${moveY}px)`;
     });
 }
+
+//Modo oscuro
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+if (localStorage.getItem('darkMode') == 'enabled') {
+    body.classList.add('dark-mode');
+    darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+}
+
