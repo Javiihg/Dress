@@ -23,3 +23,17 @@ if (localStorage.getItem('darkMode') == 'enabled') {
     darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
 }
 
+//Alternar modo oscuro
+darkModeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    const icon = darkModeToggle.querySelector(i);
+
+    if (body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('darkMode', 'enabled');
+    } else {
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('darkMode', 'disabled');
+    }
+})
