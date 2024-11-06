@@ -16,24 +16,24 @@ if (blob) {
 
 //Modo oscuro
 const darkModeToggle = document.getElementById('dark-mode-toggle');
-const body = document.body;
+        const body = document.body;
 
-if (localStorage.getItem('darkMode') == 'enabled') {
-    body.classList.add('dark-mode');
-    darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
-}
+        // Verifica el estado del modo oscuro en el almacenamiento local
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon'); // Cambia a luna si el modo oscuro está activado
+        }
 
-//Alternar modo oscuro
-darkModeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
+        // Alterna el modo oscuro al hacer clic
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
 
-    const icon = darkModeToggle.querySelector(i);
-
-    if (body.classList.contains('dark-mode')) {
-        icon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('darkMode', 'enabled');
-    } else {
-        icon.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('darkMode', 'disabled');
-    }
-})
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
