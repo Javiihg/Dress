@@ -128,11 +128,12 @@ html, body, .navbar a, name, .tittle, .blob {
 .name {
     font-size: 2em;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color); /* cambia segun el modo*/
     text-align: center;
     margin-top: 100px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     z-index: 10;
+    transition: color 0.5s;
 }
 
 .title {
@@ -141,6 +142,7 @@ html, body, .navbar a, name, .tittle, .blob {
     text-align: center;
     margin-top: 10px;
     z-index: 10;
+    transition: color 0.5s;
 }
 
 .sci {
@@ -206,6 +208,14 @@ html, body, .navbar a, name, .tittle, .blob {
     color: #f5f5f5;
 }
 
+.dark-mode .navbar a:hover {
+    color: var(--text-color);
+}
+
+.dark-mode .navbar a:hover::before {
+    background: var(--text-color);
+}
+
 #dark-mode-toggle i::after {
     content: '\f186';
     font-family: "Font Awesome 5 Free";
@@ -214,10 +224,10 @@ html, body, .navbar a, name, .tittle, .blob {
 }
 
 .dark-mode #dark-mode-toggle i::after {
-    content: '\f185'; /* Código del icono de sol de Font Awesome */
+    content: '\f185'; 
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
-    color: #3e7da2; /* Color del sol en modo oscuro */
+    color: #3e7da2; 
 }
 
 @keyframes fadeIn {
