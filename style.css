@@ -35,8 +35,8 @@ html, body, .navbar a, .name, .title, .blob {
 /* Corrección: "sextion" a "section" */
 section#about {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; /* Corrige la coma */
+    justify-content: center; /* Corrige la coma */
     align-items: center;
     width: 100%;
     height: 100%;
@@ -53,10 +53,12 @@ section#about h2 {
 }
 
 section#about p {
-    font-size: 1.5em;
-    line-height: 1.8;
-    max-width: 800px;
-    text-align: center;
+    font-size: 1.2em; /* Ajusta el tamaño de la fuente */
+    line-height: 1.5; /* Mejora la legibilidad */
+    max-width: 500px; /* Define un ancho máximo */
+    text-align: justify; /* Justifica el texto */
+    margin: 0 auto; /* Centra el bloque de texto */
+    padding: 20px; /* Añade un pequeño espacio alrededor */
 }
 
 /* Navbar */
