@@ -103,6 +103,9 @@ section#about p {
     align-items: center;
     width: 100%;
     height: 100%;
+    padding: 0 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .blob {
@@ -231,6 +234,31 @@ section#about p {
     color: #3e7da2;
 }
 
+.about-content {
+    max-width: 600px;
+    text-align: center;
+    padding: 0 20px;
+    animation: fadeIn 1s ease;
+}
+
+.about-text {
+    margin-top: 30px;
+}
+
+.about-text p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.about-content .name {
+    margin-top: 0;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
 .dark-mode .sci li a i {
     color: #f5f5f5;
 }
@@ -261,3 +289,4 @@ section#about p {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
