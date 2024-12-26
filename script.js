@@ -23,7 +23,7 @@ const darkModeToggle = document.getElementById('dark-mode-toggle');
             body.classList.add('dark-mode');
             darkModeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon'); // Cambia a luna si el modo oscuro está activado
         }
-
+        
         // Alterna el modo oscuro al hacer clic
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
