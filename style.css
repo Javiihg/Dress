@@ -122,6 +122,14 @@ section#about p {
     animation: blobAnimation 6s infinite;
 }
 
+.progress {
+    font-size: 1.2em; /* Tamaño del texto */
+    color: var(--text-color); /* Usa la variable de color para adaptarse al tema */
+    text-align: center; /* Centra el texto */
+    margin-top: 10px; /* Espacio entre "Interface Designer" y "In Progress" */
+    font-style: italic; /* Opcional: estilo cursiva */
+}
+
 @keyframes blobAnimation {
     0%, 100% {
         border-radius: 40% 60% 70% 30% / 60% 50% 70% 40%;
