@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="craft.html">Work</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <!-- Blob -->
+    <div class="blob"></div>
+
+    <!-- Craft Section -->
+    <section id="craft">
+        <h2>Work</h2>
+
+        <div class="carousel-wrapper">
+            <button id="prevBtn" class="carousel-btn left">&#10094;</button>
+
+            <div class="craft-gallery-outer">
+                <div class="craft-gallery">
+                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 1"></div>
+                    <div class="craft-item"><img src="assets/syyy.jpg" class="craft-image" alt="Craft 2"></div>
+                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 3"></div>
+                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 4"></div>
+                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 5"></div>
+                </div>
+            </div>
+
+            <button id="nextBtn" class="carousel-btn right">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Carrusel funcional
+        window.addEventListener('load', () => {
+            const track = document.querySelector('.craft-gallery');
+            const items = Array.from(track.children);
+            const itemWidth = items[0].offsetWidth + 30; // ancho + gap
+            let currentIndex = 0;
+
+            document.getElementById('nextBtn').addEventListener('click', () => {
+                if (currentIndex >= items.length - 3) return; // Evita pasar el final
+                currentIndex++;
+                moveCarousel();
+            });
+
+            document.getElementById('prevBtn').addEventListener('click', () => {
+                if (currentIndex <= 0) return; // Evita retroceder más allá del principio
+                currentIndex--;
+                moveCarousel();
+            });
+
+            function moveCarousel() {
+                track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
