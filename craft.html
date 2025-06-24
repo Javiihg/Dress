@@ -4,8 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        .craft-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .craft-image, .craft-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .craft-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .craft-item:hover .craft-video {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
 
@@ -28,11 +54,34 @@
 
             <div class="craft-gallery-outer">
                 <div class="craft-gallery">
-                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 1"></div>
-                    <div class="craft-item"><img src="assets/syyy.jpg" class="craft-image" alt="Craft 2"></div>
-                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 3"></div>
-                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 4"></div>
-                    <div class="craft-item"><img src="assets/botiness.png" class="craft-image" alt="Craft 5"></div>
+                    <div class="craft-item">
+                        <img src="assets/botiness.png" class="craft-image" alt="Craft 1">
+                        <video class="craft-video" src="assets/botinesssdaviV2 (1).mp4" muted loop></video>
+                    </div>
+                    <div class="craft-item">
+                        <img src="assets/syyy.jpg" class="craft-image" alt="Craft 2">
+                        <video class="craft-video" src="assets/2ece8d386c8945f2882b47fa92701418.mp4" muted loop></video>
+                    </div>
+                    <div class="craft-item">
+                        <img src="assets/hierbitaaa00086400.jpg" class="craft-image" alt="Craft 3">
+                        <video class="craft-video" src="assets/hierbitavideito.mp4" muted loop></video>
+                    </div>
+                    <div class="craft-item">
+                        <img src="assets/IMG_1043.PNG" class="craft-image" alt="Craft 4">
+                        <video class="craft-video" src="assets/394a8973dc63419da5f850fda3c88eba.mp4" muted loop></video>
+                    </div>
+                    <div class="craft-item">
+                        <img src="assets/IMG_1292.PNG" class="craft-image" alt="Craft 5">
+                        <video class="craft-video" src="assets/IMG_1292.mp4" muted loop></video>
+                    </div>
+                    <div class="craft-item">
+                        <img src="assets/IMG_2399.jpg" class="craft-image" alt="Craft 6">
+                        <video class="craft-video" src="assets/9bff50a63c4846d1a5b3a9ded4d77b7f.mp4" muted loop></video>
+                    </div>
+                    <div class="craft-item">
+                        <img src="assets/flowerpowersaaaa00086400.jpg" class="craft-image" alt="Craft 7">
+                        <video class="craft-video" src="assets/c3595e1b4dd94235ac7e012fba8aa4d8.mp4" muted loop></video>
+                    </div>
                 </div>
             </div>
 
@@ -42,29 +91,76 @@
 
     <!-- JavaScript -->
     <script>
-        // Carrusel funcional
-        window.addEventListener('load', () => {
-            const track = document.querySelector('.craft-gallery');
-            const items = Array.from(track.children);
-            const itemWidth = items[0].offsetWidth + 30; // ancho + gap
-            let currentIndex = 0;
+    window.addEventListener('load', () => {
+        const track = document.querySelector('.craft-gallery');
+        let items = Array.from(track.children);
+        const itemWidth = items[0].offsetWidth + 30;
+        let currentIndex = 3;
 
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                if (currentIndex >= items.length - 3) return; // Evita pasar el final
-                currentIndex++;
-                moveCarousel();
-            });
+        // Clonar los primeros y últimos elementos
+        const clonesStart = items.slice(-3).map(item => item.cloneNode(true));
+        const clonesEnd = items.slice(0, 3).map(item => item.cloneNode(true));
 
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                if (currentIndex <= 0) return; // Evita retroceder más allá del principio
-                currentIndex--;
-                moveCarousel();
-            });
+        clonesStart.forEach(clone => track.insertBefore(clone, track.firstChild));
+        clonesEnd.forEach(clone => track.appendChild(clone));
 
-            function moveCarousel() {
-                track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-            }
+        // Seleccionar los elementos después de clonar
+        items = Array.from(track.children);
+
+        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex++;
+            moveCarousel();
         });
-    </script>
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex--;
+            moveCarousel();
+        });
+
+        function moveCarousel() {
+            track.style.transition = 'transform 0.5s ease';
+            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+
+            track.addEventListener('transitionend', () => {
+                if (currentIndex >= items.length - 3) {
+                    track.style.transition = 'none';
+                    currentIndex = 3;
+                    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+                }
+
+                if (currentIndex < 3) {
+                    track.style.transition = 'none';
+                    currentIndex = items.length - 6;
+                    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+                }
+            }, { once: true });
+        }
+
+        // ✅ Reasignar hover para todos los elementos (incluyendo clones)
+        function assignHoverEvents() {
+            const allItems = document.querySelectorAll('.craft-item');
+
+            allItems.forEach(item => {
+                const video = item.querySelector('.craft-video');
+
+                item.addEventListener('mouseenter', () => {
+                    video.currentTime = 0;
+                    video.play();
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    video.pause();
+                });
+            });
+        }
+
+        assignHoverEvents(); // Llamamos a la función para asignar eventos a todos
+
+    });
+</script>
+
+
 </body>
 </html>
