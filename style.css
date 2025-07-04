@@ -425,22 +425,23 @@ body {
 }
 
 @media (max-width: 480px) {
-    .craft-item {
-        flex: 0 0 200px;
+    .craft-gallery {
+        gap: 10px;
     }
 
-    .carousel-btn.left,
-    .carousel-btn.right {
-        left: 5px;
-        right: 5px;
+    .craft-item {
+        flex: 0 0 100%;
     }
 }
+
 
 footer {
     width: 100%;
     padding: 20px 0;
     text-align: center;
 }
+
+
 
 
 

@@ -145,21 +145,33 @@
 
         // ✅ Reasignar hover para todos los elementos (incluyendo clones)
         function assignHoverEvents() {
-            const allItems = document.querySelectorAll('.craft-item');
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const allItems = document.querySelectorAll('.craft-item');
 
-            allItems.forEach(item => {
-                const video = item.querySelector('.craft-video');
+    allItems.forEach(item => {
+        const video = item.querySelector('.craft-video');
 
-                item.addEventListener('mouseenter', () => {
+        if (isMobile) {
+            item.addEventListener('click', () => {
+                if (video.paused) {
                     video.currentTime = 0;
                     video.play();
-                });
-
-                item.addEventListener('mouseleave', () => {
+                } else {
                     video.pause();
-                });
+                }
+            });
+        } else {
+            item.addEventListener('mouseenter', () => {
+                video.currentTime = 0;
+                video.play();
+            });
+            item.addEventListener('mouseleave', () => {
+                video.pause();
             });
         }
+    });
+}
+
 
         assignHoverEvents(); // Llamamos a la función para asignar eventos a todos
 
