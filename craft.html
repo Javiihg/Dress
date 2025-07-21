@@ -50,7 +50,7 @@
         <h2>Work</h2>
         <p style="font-style: italic; font-size: 1.3em; opacity: 0.7;">If you hover over the images, you'll see the video.</p>
 
-        <div class="carousel-wrapper">
+        <!--<div class="carousel-wrapper">
             <button id="prevBtn" class="carousel-btn left">&#10094;</button>
 
             <div class="craft-gallery-outer">
@@ -58,6 +58,15 @@
                     <div class="craft-item">
                         <img src="assets/botiness.png" class="craft-image" alt="Craft 1">
                         <video class="craft-video" src="assets/botinesssdaviV2 (1).mp4" muted loop></video>
+                    </div>-->
+                    <div class="pinterest-gallery">
+                         <div class="craft-item">
+                            <img src="assets/botiness.png" class="craft-image" alt="Craft 1">
+                            <video class="craft-video" src="assets/botinesssdaviV2 (1).mp4" muted loop></video>
+                        </div>
+                    <div class="craft-item">
+                        <img src="assets/cositqassss.png" class="craft-image" alt="Craft 2">
+                        <video class="craft-video" src="assets/videocaritasv2 (1).mp4" muted loop></video>
                     </div>
                     <div class="craft-item">
                         <img src="assets/syyy.jpg" class="craft-image" alt="Craft 2">
@@ -100,59 +109,12 @@
     <!-- JavaScript -->
     <script>
     window.addEventListener('load', () => {
-        const track = document.querySelector('.craft-gallery');
-        let items = Array.from(track.children);
-        const itemWidth = items[0].offsetWidth + 30;
-        let currentIndex = 3;
-
-        // Clonar los primeros y últimos elementos
-        const clonesStart = items.slice(-3).map(item => item.cloneNode(true));
-        const clonesEnd = items.slice(0, 3).map(item => item.cloneNode(true));
-
-        clonesStart.forEach(clone => track.insertBefore(clone, track.firstChild));
-        clonesEnd.forEach(clone => track.appendChild(clone));
-
-        // Seleccionar los elementos después de clonar
-        items = Array.from(track.children);
-
-        track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            currentIndex++;
-            moveCarousel();
-        });
-
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            currentIndex--;
-            moveCarousel();
-        });
-
-        function moveCarousel() {
-            track.style.transition = 'transform 0.5s ease';
-            track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-
-            track.addEventListener('transitionend', () => {
-                if (currentIndex >= items.length - 3) {
-                    track.style.transition = 'none';
-                    currentIndex = 3;
-                    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-                }
-
-                if (currentIndex < 3) {
-                    track.style.transition = 'none';
-                    currentIndex = items.length - 6;
-                    track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-                }
-            }, { once: true });
-        }
-
-        // ✅ Reasignar hover para todos los elementos (incluyendo clones)
-        function assignHoverEvents() {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     const allItems = document.querySelectorAll('.craft-item');
 
     allItems.forEach(item => {
         const video = item.querySelector('.craft-video');
+        if (!video) return;
 
         if (isMobile) {
             item.addEventListener('click', () => {
@@ -173,12 +135,8 @@
             });
         }
     });
-}
+});
 
-
-        assignHoverEvents(); // Llamamos a la función para asignar eventos a todos
-
-    });
 </script>
 
 
