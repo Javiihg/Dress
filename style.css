@@ -55,7 +55,7 @@ section#about p {
     font-size: 1.2em; /* Ajusta el tamaño de la fuente */
     line-height: 1.5; /* Mejora la legibilidad */
     max-width: 500px; /* Define un ancho máximo */
-    text-align: justify; /* Justifica el texto */
+    text-align: center; /* Justifica el texto */
     margin: 0 auto; /* Centra el bloque de texto */
     padding: 20px; /* Añade un pequeño espacio alrededor */
 }
@@ -475,6 +475,35 @@ footer {
     opacity: 1;
 }
 
+@media (max-width: 600px) {
+    .pinterest-gallery {
+        grid-template-columns: repeat(2, 1fr); /* ✅ 2 columnas fijas */
+        gap: 15px; /* Opcional: menos espacio entre elementos */
+    }
+
+    .craft-item {
+        border-radius: 8px;
+    }
+
+    .craft-image, .craft-video {
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pinterest-gallery {
+        grid-template-columns: repeat(2, 1fr); /* ✅ 2 columnas fijas */
+        gap: 15px; /* Opcional: menos espacio entre elementos */
+    }
+
+    .craft-item {
+        border-radius: 8px;
+    }
+
+    .craft-image, .craft-video {
+        border-radius: 8px;
+    }
+}
 
 
 
